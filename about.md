@@ -1,8 +1,7 @@
 Features
 --------
 
-* High performance
-* Connection pool
+* High performance connection pool
 * Limit connections for users and databases
 * Prefill support
 * Remove idle connections

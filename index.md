@@ -14,8 +14,7 @@ hero:
       link: /releases
 
 features:
-  - title: High performance
-  - title: Connection pool
+  - title: High performance connection pool
   - title: Limit connections for users and databases
   - title: Prefill support
   - title: Remove idle connections
