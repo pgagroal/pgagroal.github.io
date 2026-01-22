@@ -1,14 +1,42 @@
 # Developer guide
 
-For Fedora 40
-
 ## Install PostgreSql
 
-``` sh
-dnf install postgresql-server
+For RPM based distributions such as Fedora and RHEL you can add the
+[PostgreSQL YUM repository](https://yum.postgresql.org/) and do the install via
+
+**Fedora 43**
+
+```sh
+rpm -Uvh https://download.postgresql.org/pub/repos/yum/reporpms/F-43-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 ```
 
-, this will install PostgreSQL 15.
+**RHEL 10.x / Rocky Linux 10.x**
+
+**x86_64**
+
+```sh
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+rpm -Uvh https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+dnf config-manager --set-enabled crb
+```
+
+**aarch64**
+
+```sh
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+rpm -Uvh https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-aarch64/pgdg-redhat-repo-latest.noarch.rpm
+dnf config-manager --set-enabled crb
+```
+
+**PostgreSQL 18**
+
+``` sh
+dnf -qy module disable postgresql
+dnf install -y postgresql18 postgresql18-server postgresql18-contrib postgresql18-libs
+```
+
+This will install PostgreSQL 18.
 
 ## Install pgagroal
 
@@ -65,7 +93,7 @@ dnf install graphviz doxygen
 
 ``` sh
 cd /usr/local
-git clone https://github.com/agroal/pgagroal.git
+git clone https://github.com/pgagroal/pgagroal.git
 cd pgagroal
 mkdir build
 cd build
@@ -74,7 +102,7 @@ make
 make install
 ```
 
-This will install [**pgagroal**](https://github.com/agroal/pgagroal) in the `/usr/local` hierarchy with the debug profile.
+This will install [**pgagroal**](https://github.com/pgagroal/pgagroal) in the `/usr/local` hierarchy with the debug profile.
 
 ### Check version
 
@@ -97,7 +125,7 @@ Remember to run `ldconfig` to make the change effective.
 
 ## Setup pgagroal
 
-Let's give it a try. The basic idea here is that we will use two users: one is `postgres`, which will run PostgreSQL, and one is [**pgagroal**](https://github.com/agroal/pgagroal), which will run [**pgagroal**](https://github.com/agroal/pgagroal) to do backup of PostgreSQL.
+Let's give it a try. The basic idea here is that we will use two users: one is `postgres`, which will run PostgreSQL, and one is [**pgagroal**](https://github.com/pgagroal/pgagroal), which will run [**pgagroal**](https://github.com/pgagroal/pgagroal) to do backup of PostgreSQL.
 
 In many installations, there is already an operating system user named `postgres` that is used to run the PostgreSQL server. You can use the command
 
@@ -239,7 +267,7 @@ host = localhost
 port = 5432
 ```
 
-In our main section called `[pgagroal]` we setup [**pgagroal**](https://github.com/agroal/pgagroal) to listen on all network addresses.
+In our main section called `[pgagroal]` we setup [**pgagroal**](https://github.com/pgagroal/pgagroal) to listen on all network addresses.
 Logging will be performed at `info` level and put in a file called `/tmp/pgagroal.log`. We will use 100 connections at a maximum, and they will idle out after 10 minutes. No validation will be performed.
 Last we specify the location of the `unix_socket_dir` used for management operations.
 
@@ -292,7 +320,7 @@ In order to debug problems in your code you can use [gdb](https://www.sourceware
 the `pgagroal_log_XYZ()` API
 
 ### Core APIs
-You may find [core APIs](https://github.com/agroal/pgagroal/blob/master/doc/manual/dev-07-core_api.md) quite useful. Try
+You may find [core APIs](https://github.com/pgagroal/pgagroal/blob/master/doc/manual/dev-07-core_api.md) quite useful. Try
 not to reinvent the wheels, unless for a good reason.
 
 ## Basic git guide
@@ -320,7 +348,7 @@ Do
 
 ```sh
 cd pgagroal
-git remote add upstream https://github.com/agroal/pgagroal.git
+git remote add upstream https://github.com/pgagroal/pgagroal.git
 ```
 
 ### Do a work branch
@@ -380,9 +408,9 @@ Based on feedback keep making changes, squashing, rebasing and force pushing
 
 ### Undo
 
-Normally you can reset to an earlier commit using `git reset <commit hash> --hard`. 
-But if you accidentally squashed two or more commits, and you want to undo that, 
-you need to know where to reset to, and the commit seems to have lost after you rebased. 
+Normally you can reset to an earlier commit using `git reset <commit hash> --hard`.
+But if you accidentally squashed two or more commits, and you want to undo that,
+you need to know where to reset to, and the commit seems to have lost after you rebased.
 
 But they are not actually lost - using `git reflog`, you can find every commit the HEAD pointer
 has ever pointed to. Find the commit you want to reset to, and do `git reset --hard`.
