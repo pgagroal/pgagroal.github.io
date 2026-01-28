@@ -2,7 +2,7 @@
 
 |Version|Date (`YYYY` / `MM` / `DD`) |
 |:---|---|
-|[pgagroal 2.0.0](/_posts/2026-01-23-pgagroal-2.0.0.html)|`2026` / `01` / `23`|
+|[pgagroal 2.0.0](/_posts/2026-01-28-pgagroal-2.0.0.html)|`2026` / `01` / `28`|
 
 ## yum.postgresql.org
 
