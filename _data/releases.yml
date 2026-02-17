@@ -1,3 +1,6 @@
 - name: pgagroal 2.0.0
   date: 2026-01-28
   announce: release/announcement/2026/01/28/pgagroal-2.0.0.html
+- name: pgagroal 2.0.1
+  date: 2026-02-17
+  announce: release/announcement/2026/02/17/pgagroal-2.0.1.html
