@@ -5,19 +5,19 @@
 [**pgagroal**](https://github.com/agroal/pgagroal) use a process model (`fork()`), where each process handles one connection to [PostgreSQL](https://www.postgresql.org).
 This was done such a potential crash on one connection won't take the entire pool down.
 
-The main process is defined in [main.c](../src/main.c). When a client connects it is processed in its own process, which
-is handle in [worker.h](../src/include/worker.h) ([worker.c](../src/libpgagroal/worker.c)).
+The main process is defined in [main.c](https://github.com/pgagroal/pgagroal/blob/master/src/main.c). When a client connects it is processed in its own process, which
+is handle in [worker.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/worker.h) ([worker.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/worker.c)).
 
 Once the client disconnects the connection is put back in the pool, and the child process is terminated.
 
 ## Shared memory
 
-A memory segment ([shmem.h](../src/include/shmem.h)) is shared among all processes which contains the [**pgagroal**](https://github.com/agroal/pgagroal)
+A memory segment ([shmem.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/shmem.h)) is shared among all processes which contains the [**pgagroal**](https://github.com/agroal/pgagroal)
 state containing the configuration of the pool, the list of servers and the state of each connection.
 
 The configuration of [**pgagroal**](https://github.com/agroal/pgagroal) (`struct configuration`), the configuration of the servers (`struct server`) and
 the state of each connection (`struct connection`) is initialized in this shared memory segment.
-These structs are all defined in [pgagroal.h](../src/include/pgagroal.h).
+These structs are all defined in [pgagroal.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/pgagroal.h).
 
 The shared memory segment is created using the `mmap()` call.
 
@@ -39,25 +39,25 @@ connection, and move them around in the connection state diagram. The state diag
 | `STATE_VALIDATION` | The connection is being validated |
 | `STATE_REMOVE` | The connection is being removed |
 
-These state are defined in [pgagroal.h](../src/include/pgagroal.h).
+These state are defined in [pgagroal.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/pgagroal.h).
 
 ## Pool
 
-The [**pgagroal**](https://github.com/agroal/pgagroal) pool API is defined in [pool.h](../src/include/pool.h) ([pool.c](../src/libpgagroal/pool.c)).
+The [**pgagroal**](https://github.com/agroal/pgagroal) pool API is defined in [pool.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/pool.h) ([pool.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/pool.c)).
 
 This API defines the functionality of the pool such as getting a connection from the pool, and returning it.
 There is no ordering among processes, so a newly created process can obtain a connection before an older process.
 
-The pool operates on the `struct connection` data type defined in [pgagroal.h](../src/include/pgagroal.h).
+The pool operates on the `struct connection` data type defined in [pgagroal.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/pgagroal.h).
 
 ## Network and messages
 
-All communication is abstracted using the `struct message` data type defined in [message.h](../src/include/message.h).
+All communication is abstracted using the `struct message` data type defined in [message.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/message.h).
 
-Reading and writing messages are handled in the [message.h](../src/include/message.h) ([message.c](../src/libpgagroal/message.c))
+Reading and writing messages are handled in the [message.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/message.h) ([message.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/message.c))
 files.
 
-Network operations are defined in [network.h](../src/include/network.h) ([network.c](../src/libpgagroal/network.c)).
+Network operations are defined in [network.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/network.h) ([network.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/network.c)).
 
 ## Memory
 
@@ -65,14 +65,14 @@ Each process uses a fixed memory block for its network communication, which is a
 
 That way we don't have to allocate memory for each network message, and more importantly free it after end of use.
 
-The memory interface is defined in [memory.h](../src/include/memory.h) ([memory.c](../src/libpgagroal/memory.c)).
+The memory interface is defined in [memory.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/memory.h) ([memory.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/memory.c)).
 
 ## Management
 
 `pgagroal` has a management interface which defines the administrator abilities that can be performed when it is running.
-This include for example taking a backup. The `pgagroal-cli` program is used for these operations ([cli.c](../src/cli.c)).
+This include for example taking a backup. The `pgagroal-cli` program is used for these operations ([cli.c](https://github.com/pgagroal/pgagroal/blob/master/src/cli.c)).
 
-The management interface is defined in [management.h](../src/include/management.h). The management interface
+The management interface is defined in [management.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/management.h). The management interface
 uses its own protocol which uses JSON as its foundation.
 
 ### Write
@@ -123,11 +123,11 @@ However, before the management packet is sent the client has to authenticate usi
 same message format that PostgreSQL uses, e.g. StartupMessage, AuthenticationSASL, AuthenticationSASLContinue,
 AuthenticationSASLFinal and AuthenticationOk. The SSLRequest message is supported.
 
-The remote management interface is defined in [remote.h](../src/include/remote.h) ([remote.c](../src/libpgagroal/remote.c)).
+The remote management interface is defined in [remote.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/remote.h) ([remote.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/remote.c)).
 
 ## I/O layer
 
-The I/O layer interface is primarily defined in [ev.h](../src/include/ev.h) (and implemented in [ev.c](../src/libpgagroal/ev.c)).
+The I/O layer interface is primarily defined in [ev.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/ev.h) (and implemented in [ev.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/ev.c)).
 
 These files contain the definition and implementation of the event loop for the three supported backends:
 io_uring, epoll, and kqueue.
@@ -178,7 +178,7 @@ Both contexts support the same configuration options:
 - `epoll`: Linux-specific, traditional event notification
 - `kqueue`: BSD/macOS event notification mechanism
 
-The implementation is done in [ev.h](../src/include/ev.h) and [ev.c](../src/libpgagroal/ev.c).
+The implementation is done in [ev.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/ev.h) and [ev.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/ev.c).
 
 ## Pipeline
 
@@ -200,7 +200,7 @@ struct pipeline
 };
 ```
 
-in [pipeline.h](../src/include/pipeline.h).
+in [pipeline.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/pipeline.h).
 
 The functions in the pipeline are defined as
 
@@ -227,7 +227,7 @@ struct worker_io
    SSL* server_ssl;      /* The server SSL context */
 };
 ```
-defined in [worker.h](../src/include/worker.h).
+defined in [worker.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/worker.h).
 
 ### Performance pipeline
 
@@ -236,7 +236,7 @@ One of the goals for [**pgagroal**](https://github.com/agroal/pgagroal) is perfo
 Likewise the performance pipeline will only look for `FATAL` errors from the server. This makes the pipeline very fast, since there
 is a minimum overhead in the interaction.
 
-The pipeline is defined in [pipeline_perf.c](../src/libpgagroal/pipeline_perf.c) in the functions
+The pipeline is defined in [pipeline_perf.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/pipeline_perf.c) in the functions
 
 | Function | Description |
 |----------|-------------|
@@ -253,7 +253,7 @@ The pipeline is defined in [pipeline_perf.c](../src/libpgagroal/pipeline_perf.c)
 The session pipeline works like the performance pipeline with the exception that it checks if
 a Transport Layer Security (TLS) transport should be used.
 
-The pipeline is defined in [pipeline_session.c](../src/libpgagroal/pipeline_session.c) in the functions
+The pipeline is defined in [pipeline_session.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/pipeline_session.c) in the functions
 
 | Function | Description |
 |----------|-------------|
@@ -276,7 +276,7 @@ to check the status of the transaction, and therefore needs to maintain track of
 The pipeline has a management interface in order to receive the socket descriptors from the parent process when a new
 connection is added to the pool. The pool will retry if the client in question doesn't consider the socket descriptor valid.
 
-The pipeline is defined in [pipeline_transaction.c](../src/libpgagroal/pipeline_transaction.c) in the functions
+The pipeline is defined in [pipeline_transaction.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/pipeline_transaction.c) in the functions
 
 | Function | Description |
 |----------|-------------|
@@ -340,8 +340,8 @@ All other URLs will result in a 403 response.
 
 The metrics endpoint supports `Transfer-Encoding: chunked` to account for a large amount of data.
 
-The implementation is done in [prometheus.h](../src/include/prometheus.h) and
-[prometheus.c](../src/libpgagroal/prometheus.c).
+The implementation is done in [prometheus.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/prometheus.h) and
+[prometheus.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/prometheus.c).
 
 ## Failover support
 
@@ -349,15 +349,15 @@ pgagroal can failover a PostgreSQL instance if clients can't write to it.
 
 This is done using an external script provided by the user.
 
-The implementation is done in [server.h](../src/include/server.h) and
-[server.c](../src/libpgagroal/server.c).
+The implementation is done in [server.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/server.h) and
+[server.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/server.c).
 
 ## Logging
 
 Simple logging implementation based on a `atomic_schar` lock.
 
-The implementation is done in [logging.h](../src/include/logging.h) and
-[logging.c](../src/libpgagroal/logging.c).
+The implementation is done in [logging.h](https://github.com/pgagroal/pgagroal/blob/master/src/include/logging.h) and
+[logging.c](https://github.com/pgagroal/pgagroal/blob/master/src/libpgagroal/logging.c).
 
 ## Protocol
 

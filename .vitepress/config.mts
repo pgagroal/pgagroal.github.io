@@ -4,6 +4,11 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
    title: "pgagroal",
    description: "Documentation website for pgagroal",
+   srcExclude: [
+      "vendor/**",
+      "node_modules/**",
+      "_site/**",
+   ],
    themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       nav: [
@@ -57,4 +62,3 @@ export default defineConfig({
       socialLinks: [{ icon: "github", link: "https://github.com/pgagroal" }],
    },
 });
-

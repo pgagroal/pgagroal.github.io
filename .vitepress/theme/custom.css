@@ -1,0 +1,53 @@
+@media (min-width: 768px) {
+  .VPNavBar .content-body > .social-links {
+    order: 1;
+    margin-right: 0;
+  }
+
+  .VPNavBar .content-body > .appearance {
+    order: 2;
+  }
+
+  .VPNavBar .content-body > .social-links::before {
+    content: none;
+  }
+
+  .VPNavBar .content-body > .appearance::before {
+    margin-right: 8px;
+    margin-left: 16px;
+    width: 1px;
+    height: 24px;
+    background-color: var(--vp-c-divider);
+    content: "";
+  }
+}
+
+@media (max-width: 767px) {
+  .VPNavScreen .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .VPNavScreen .social-links {
+    order: 1;
+  }
+
+  .VPNavScreen .appearance {
+    order: 2;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .VPNavBarExtra .VPMenu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .VPNavBarExtra .VPMenu > .group:has(.social-links) {
+    order: 1;
+  }
+
+  .VPNavBarExtra .VPMenu > .group:has(.appearance) {
+    order: 2;
+  }
+}
