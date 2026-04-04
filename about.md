@@ -27,7 +27,7 @@ Overview
 * `io_uring` (Linux) / `kqueue` (*BSD) for fast network interactions
 * [Atomic operations](https://en.cppreference.com/w/c/atomic) are used to keep track of state
 
-See [Architecture](./ARCHITECTURE.md) for the architecture of `pgagroal`.
+See [Architecture](/doc/ARCHITECTURE) for the architecture of `pgagroal`.
 
 Further information
 -------------------

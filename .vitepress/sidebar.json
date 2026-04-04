@@ -1,0 +1,126 @@
+[
+  {
+    "text": "Introduction",
+    "link": "/doc/manual/en/01-introduction"
+  },
+  {
+    "text": "Installation",
+    "link": "/doc/manual/en/02-installation"
+  },
+  {
+    "text": "Getting started",
+    "link": "/doc/manual/en/03-gettingstarted"
+  },
+  {
+    "text": "Configuration",
+    "link": "/doc/manual/en/04-configuration"
+  },
+  {
+    "text": "Prefill",
+    "link": "/doc/manual/en/05-prefill"
+  },
+  {
+    "text": "Remote administration",
+    "link": "/doc/manual/en/06-remote_management"
+  },
+  {
+    "text": "Security model",
+    "link": "/doc/manual/en/07-split_security"
+  },
+  {
+    "text": "Transport Level Security (TLS)",
+    "link": "/doc/manual/en/08-tls"
+  },
+  {
+    "text": "Database Aliases",
+    "link": "/doc/manual/en/09-database_alias"
+  },
+  {
+    "text": "Vault",
+    "link": "/doc/manual/en/10-vault"
+  },
+  {
+    "text": "Prometheus",
+    "link": "/doc/manual/en/11-prometheus"
+  },
+  {
+    "text": "Docker",
+    "link": "/doc/manual/en/12-docker"
+  },
+  {
+    "text": "Command Line Tools",
+    "link": "/doc/manual/en/13-cli-tools"
+  },
+  {
+    "text": "Performance",
+    "link": "/doc/manual/en/14-performance"
+  },
+  {
+    "text": "Failover",
+    "link": "/doc/manual/en/15-failover"
+  },
+  {
+    "text": "Pipelines",
+    "link": "/doc/manual/en/16-pipelines"
+  },
+  {
+    "text": "Security",
+    "link": "/doc/manual/en/17-security"
+  },
+  {
+    "text": "Developers",
+    "link": "/doc/manual/en/70-dev"
+  },
+  {
+    "text": "Git guide",
+    "link": "/doc/manual/en/71-git"
+  },
+  {
+    "text": "Architecture",
+    "link": "/doc/manual/en/72-architecture"
+  },
+  {
+    "text": "RPM",
+    "link": "/doc/manual/en/73-rpm"
+  },
+  {
+    "text": "Building pgagroal",
+    "link": "/doc/manual/en/74-building"
+  },
+  {
+    "text": "Code Coverage",
+    "link": "/doc/manual/en/75-codecoverage"
+  },
+  {
+    "text": "Event Loop",
+    "link": "/doc/manual/en/76-eventloop"
+  },
+  {
+    "text": "Core APIs",
+    "link": "/doc/manual/en/77-core_api"
+  },
+  {
+    "text": "Test Suite",
+    "link": "/doc/manual/en/78-test"
+  },
+  {
+    "text": "Distribution-Specific Installation",
+    "link": "/doc/manual/en/79-distributions"
+  },
+  {
+    "text": "Sponsors",
+    "link": "/doc/manual/en/96-sponsors"
+  },
+  {
+    "text": "Acknowledgement",
+    "link": "/doc/manual/en/97-acknowledgement"
+  },
+  {
+    "text": "License",
+    "link": "/doc/manual/en/98-licenses"
+  },
+  {
+    "text": "References",
+    "link": "/doc/manual/en/99-references"
+  }
+]

@@ -1,9 +1,14 @@
 import { defineConfig } from "vitepress";
+import manualSidebar from "./sidebar.json";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
    title: "pgagroal",
    description: "Documentation website for pgagroal",
+   ignoreDeadLinks: [
+      /^https?:\/\/localhost/,
+      /\/doc\/manual\/README/
+   ],
    srcExclude: [
       "vendor/**",
       "node_modules/**",
@@ -13,11 +18,11 @@ export default defineConfig({
       // https://vitepress.dev/reference/default-theme-config
       nav: [
          { text: "Home", link: "/" },
-         { text: "Documentation", link: "/documentation" },
-         { text: "Configuration", link: "/configuration" },
-         { text: "Metrics", link: "/metrics" },
+         { text: "Documentation", link: "/doc/GETTING_STARTED" },
+         { text: "Configuration", link: "/doc/CONFIGURATION" },
+         { text: "Metrics", link: "/doc/PROMETHEUS" },
          { text: "News", link: "/news" },
-         { text: "Developers", link: "/developers" },
+         { text: "Developers", link: "/doc/DEVELOPERS" },
          { text: "About", link: "/about" },
       ],
 
@@ -35,15 +40,28 @@ export default defineConfig({
          },
          {
             text: "Getting Started",
-            link: "/gettingstarted"
+            link: "/doc/GETTING_STARTED"
+         },
+         {
+            text: "Configuration",
+            link: "/doc/CONFIGURATION"
          },
          {
             text: "Releases",
             link: "/releases"
          },
          {
-            text: "Manuals",
+            text: "PDF Manual",
             link: "/manuals"
+         },
+         {
+            text: "User Manual",
+            collapsed: false,
+            items: manualSidebar
+         },
+         {
+            text: "Code of Conduct",
+            link: "/CODE_OF_CONDUCT"
          },
          {
             text: "GitHub Issues",

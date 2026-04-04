@@ -65,10 +65,10 @@ This process is optional. If you choose not to generate the PDF and HTML files, 
     Download the `Eisvogel` template for `pandoc`, please visit the [pandoc-latex-template](https://github.com/Wandmalfarbe/pandoc-latex-template) repository. For a standard installation, you can follow the steps outlined below.
 
     ```sh
-    wget https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v3.3.0/Eisvogel-3.3.0.tar.gz
-    tar -xzf Eisvogel-3.3.0.tar.gz
+    wget https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v3.4.0/Eisvogel-3.4.0.tar.gz
+    tar -xzf Eisvogel-3.4.0.tar.gz
     mkdir -p ~/.local/share/pandoc/templates
-    mv Eisvogel-3.3.0/eisvogel.latex ~/.local/share/pandoc/templates/
+    mv Eisvogel-3.4.0/eisvogel.latex ~/.local/share/pandoc/templates/
     ```
 
 3. Add package for LaTeX
@@ -405,6 +405,14 @@ and then create a pull requests for it
 ### Repeat
 
 Based on feedback keep making changes, squashing, rebasing and force pushing
+
+### PTAL
+
+When you are working on a change put it into Draft mode, so we know that you are not
+happy with it yet.
+
+Please, send a PTAL to the Committer that were assigned to you once you think that
+your change is complete. And, of course, take it out of Draft mode.
 
 ### Undo
 
