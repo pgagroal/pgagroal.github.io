@@ -140,6 +140,11 @@ async function fetchDirectory(repoPath) {
 
           // Collect info for sidebar if it's in the manual/en/ folder
           if (item.path.startsWith('doc/manual/en/')) {
+            if (path.basename(item.path) === '99-references.md') {
+              console.log(`Skipping sidebar entry: ${item.path}`);
+              continue;
+            }
+
             // Extract title from YAML frontmatter or first # line
             let title = '';
             const yamlTitleMatch = processed.match(/^title:\s*"(.+)"/m);
@@ -194,7 +199,7 @@ async function main() {
     
     // 2. Recursively fetch the doc/ directory
     await fetchDirectory('doc');
-    
+
     // 3. Sort and save sidebar configuration
     console.log('Generating dynamic sidebar...');
     sidebarItems.sort((a, b) => a.filename.localeCompare(b.filename));

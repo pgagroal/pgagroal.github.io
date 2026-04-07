@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { withSharedManualReferences } from "./shared-manual-references.mts";
 import manualSidebar from "./sidebar.json";
 
 // https://vitepress.dev/reference/site-config
@@ -14,6 +15,11 @@ export default defineConfig({
       "node_modules/**",
       "_site/**",
    ],
+   markdown: {
+      config(md) {
+         withSharedManualReferences(md, process.cwd());
+      }
+   },
    themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       nav: [
