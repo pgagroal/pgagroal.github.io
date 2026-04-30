@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import https from 'https';
 
-const TAG = '2.0.2';
+const TAG = '2.1.0';
 const REPO_OWNER = 'pgagroal';
 const REPO_NAME = 'pgagroal';
 const REPO_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${TAG}`;
