@@ -1,3 +1,5 @@
+\newpage
+
 # Pipelines
 
 [**pgagroal**][pgagroal] supports 3 different pipelines that determine how connections are managed and what features are available.

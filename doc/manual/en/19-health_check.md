@@ -1,3 +1,5 @@
+\newpage
+
 # Health Check
 
 [**pgagroal**][pgagroal] can periodically check the health of the [PostgreSQL][postgresql] instances in the pool. If a server is found to be down, it will be marked as such, and connections will be routed to other available servers.

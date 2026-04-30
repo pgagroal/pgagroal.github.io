@@ -1,3 +1,5 @@
+\newpage
+
 ## Code Coverage
 
 ### Overview

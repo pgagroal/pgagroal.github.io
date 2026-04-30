@@ -1,3 +1,5 @@
+\newpage
+
 ## Building pgagroal
 
 ### Overview

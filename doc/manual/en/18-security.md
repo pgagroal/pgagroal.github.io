@@ -1,3 +1,5 @@
+\newpage
+
 # Security
 
 This chapter provides comprehensive security guidance for [**pgagroal**][pgagroal] deployments.

@@ -1,3 +1,5 @@
+\newpage
+
 # Database Aliases
 
 ## Overview

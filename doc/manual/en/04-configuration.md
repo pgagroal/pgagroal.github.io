@@ -1,3 +1,5 @@
+\newpage
+
 # Configuration
 
 The configuration is loaded from either the path specified by the `-c` flag or `/etc/pgagroal/pgagroal.conf`.
