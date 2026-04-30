@@ -2,6 +2,7 @@
 
 |Version|Date (`YYYY` / `MM` / `DD`) |
 |:---|---|
+|[pgagroal 2.1.0](/_posts/2026-04-29-pgagroal-2.1.0.html)|`2026` / `04` / `29`|
 |[pgagroal 2.0.2](/_posts/2026-02-25-pgagroal-2.0.2.html)|`2026` / `02` / `25`|
 |[pgagroal 2.0.1](/_posts/2026-02-17-pgagroal-2.0.1.html)|`2026` / `02` / `17`|
 |[pgagroal 2.0.0](/_posts/2026-01-28-pgagroal-2.0.0.html)|`2026` / `01` / `28`|

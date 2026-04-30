@@ -6,9 +6,10 @@ outline: deep
 
 ## Latest
 
-- [`2026/02/25`] `pgagroal` v2.0.2 released. [The release notes](/_posts/2026-02-25-pgagroal-2.0.2.html).
+- [`2026/04/29`] `pgagroal` v2.1.0 released. [The release notes](/_posts/2026-04-29-pgagroal-2.1.0.html).
 
 ## Older
 
+- [`2026/02/25`] `pgagroal` v2.0.2 released. [The release notes](/_posts/2026-02-25-pgagroal-2.0.2.html).
 - [`2026/02/17`] `pgagroal` v2.0.1 released. [The release notes](/_posts/2026-02-17-pgagroal-2.0.1.html).
 - [`2026/01/28`] `pgagroal` v2.0.0 released. [The release notes](/_posts/2026-01-28-pgagroal-2.0.0.html).
