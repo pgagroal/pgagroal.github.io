@@ -1,5 +1,3 @@
-\newpage
-
 # Getting started
 
 First of all, make sure that [**pgagroal**](https://github.com/pgagroal/pgagroal) is installed and in your path by

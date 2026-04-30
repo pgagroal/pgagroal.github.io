@@ -1,5 +1,3 @@
-\newpage
-
 # Web console
 
 The pgagroal web console is a lightweight HTTP UI for monitoring PostgreSQL
@@ -53,7 +51,7 @@ The default simple view shows:
 - **Value** (column 2)
 - **Label columns** (additional columns) — each label key appears as its own column
 
-![Web console home page in simple view](images/console_home_simple.png)
+![Web console home page in simple view](../../images/console_home_simple.png)
 
 ### 3. Home page—advanced view
 
@@ -63,7 +61,7 @@ Toggle to advanced view to see:
 - **Value** (column 3)
 - **Labels** (column 4) — one comma-separated column, e.g., `database=mydb, name=primary`
 
-![Web console home page in advanced view](images/console_home_advanced.png)
+![Web console home page in advanced view](../../images/console_home_advanced.png)
 
 ### 4. Category organization
 
@@ -82,7 +80,7 @@ The **Server filter** dropdown:
 - Allows multi-select (check/uncheck each server)
 - The metrics table updates to show rows only from selected servers
 
-![Web console home page server filter](images/console_home_server_filter.png)
+![Web console home page server filter](../../images/console_home_server_filter.png)
 
 ### 6. Refresh button
 

@@ -1,5 +1,3 @@
-\newpage
-
 ## Test Suite
 
 ### Overview

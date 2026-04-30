@@ -1,5 +1,3 @@
-\newpage
-
 # Introduction
 
 [**pgagroal**][pgagroal] is a high-performance protocol-native connection pool for [PostgreSQL][postgresql].

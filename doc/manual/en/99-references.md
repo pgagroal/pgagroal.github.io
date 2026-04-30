@@ -1,5 +1,3 @@
-\newpage
-
 # References
 
 This section contains reference links used throughout the manual.

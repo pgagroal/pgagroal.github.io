@@ -1,5 +1,3 @@
-\newpage
-
 # Security model
 
 **Create frontend users**

@@ -1,5 +1,3 @@
-
-
 # Failover
 
 [**pgagroal**][pgagroal] can failover a PostgreSQL instance if clients can't write to it.

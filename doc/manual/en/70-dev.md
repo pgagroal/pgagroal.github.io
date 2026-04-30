@@ -1,5 +1,3 @@
-\newpage
-
 # Developers
 
 This chapter provides comprehensive guidance for developers who want to contribute to pgagroal, understand its architecture, or extend its functionality.

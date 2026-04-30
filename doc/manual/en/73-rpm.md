@@ -1,5 +1,3 @@
-\newpage
-
 ## RPM
 
 [**pgagroal**][pgagroal] can be built into a RPM for [Fedora][fedora] systems.

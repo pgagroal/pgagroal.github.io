@@ -1,5 +1,3 @@
-\newpage
-
 ## Git guide
 
 Here are some links that will help you

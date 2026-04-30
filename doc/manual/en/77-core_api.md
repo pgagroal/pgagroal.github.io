@@ -1,5 +1,3 @@
-\newpage
-
 ## Core APIs
 
 [**pgagroal**][pgagroal] offers data structures and APIs to help you write safer code and 

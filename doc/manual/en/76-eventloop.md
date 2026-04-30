@@ -1,5 +1,3 @@
-\newpage
-
 ## Event Loop
 
 Here you find a concise developer-focused description of how the event loop implemented in `ev.c` and `ev.h` operates. This includes architecture, watcher mechanics, lifecycle, role separation, callback pipelines, and planned enhancements.

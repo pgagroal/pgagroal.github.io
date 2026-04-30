@@ -1,5 +1,3 @@
-
-
 # Command Line Tools
 
 This chapter provides comprehensive reference for pgagroal's command-line utilities.

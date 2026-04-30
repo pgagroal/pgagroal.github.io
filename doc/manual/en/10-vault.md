@@ -1,5 +1,3 @@
-\newpage
-
 # Vault
 
 ## Enable rotation of passwords

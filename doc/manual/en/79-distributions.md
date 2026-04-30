@@ -1,5 +1,3 @@
-\newpage
-
 ## Distribution-Specific Installation
 
 This chapter provides installation instructions for different operating systems and distributions.

@@ -1,5 +1,3 @@
-
-
 # Performance
 
 Performance is an important goal for [**pgagroal**][pgagroal] and effort have been made

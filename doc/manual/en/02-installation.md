@@ -1,5 +1,3 @@
-\newpage
-
 # Installation
 
 ## Rocky Linux
