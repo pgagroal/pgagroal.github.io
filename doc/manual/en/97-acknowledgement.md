@@ -1,4 +1,4 @@
-\newpage
+
 
 # Acknowledgement
 
@@ -29,21 +29,15 @@ Sangkeun J.C. Kim <jchrys@me.com>
 Arshdeep Singh <balarsh535@gmail.com>
 Vanes Angelo <k124k3n@gmail.com>
 Bassam Adnan <mailbassam@gmail.com>
-Mingzhuo Yin <yinmingzhuo@gmail.com>
 Sara Nabih <nabihsara8@gmail.com>
 Mahmoud Hamdy (TutTrue) <mahmoud.hamdy5113@gmail.com>
 Ankush Mondal <mondalankush9851@gmail.com>
 Shashank Singh <shashanksgh3@gmail.com>
+Zeyad Daowd <zeyaddaowd@yahoo.com>
 Mazen Kamal <mazenkamal212@gmail.com>
 Shashidhar B M <shashidhar.i.0119@gmail.com>
 Trevor Jacob Mathews <trevorjacobmathews@gmail.com>
 Abdelrhman Sersawy <abdelrhmansersawy@gmail.com>
-Zeyad Daowd <zeyaddaowd@yahoo.com>
-Somye Mahajan <mahajan.somye@gmail.com>
-Bhawesh Panwar <panwarbhawesh1112@gmail.com>
-Frank Heikens <frank@elevarq.com>
-Sakshi Aggarwal <sakshiaggarwal2706@gmail.com>
-Ameen Sakr <ameensakr623@gmail.com>
 ```
 
 ## Committers
@@ -51,9 +45,6 @@ Ameen Sakr <ameensakr623@gmail.com>
 ```
 Jesper Pedersen <jesperpedersen.db@gmail.com>
 Luca Ferrari <fluca1978@gmail.com>
-Haoran Zhang <andrewzhr9911@gmail.com>
-Bassam Adnan <mailbassam@gmail.com>
-Tejas Tyagi <tejastyagi.tt@gmail.com>
 ```
 
 ## Contributing

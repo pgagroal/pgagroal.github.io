@@ -1,4 +1,4 @@
-\newpage
+
 
 # Getting started
 
@@ -6,7 +6,7 @@ First of all, make sure that [**pgagroal**](https://github.com/pgagroal/pgagroal
 using `pgagroal -?`. You should see
 
 ```
-pgagroal 2.2.0
+pgagroal 2.0.2
   High-performance connection pool for PostgreSQL
 
 Usage:
@@ -26,7 +26,7 @@ Options:
   -?, --help                         Display help
 ```
 
-If you don't have [**pgagroal**](https://github.com/pgagroal/pgagroal) in your path see [README](../README.md) on how to
+If you don't have [**pgagroal**](https://github.com/pgagroal/pgagroal) in your path see [README](/doc/manual/README) on how to
 compile and install [**pgagroal**](https://github.com/pgagroal/pgagroal) in your system.
 
 ## Configuration
@@ -78,7 +78,7 @@ for all databases and all user names.
 
 We are now ready to run [**pgagroal**](https://github.com/pgagroal/pgagroal).
 
-See [Configuration](./CONFIGURATION.md) for all configuration options.
+See [Configuration](/doc/CONFIGURATION.md) for all configuration options.
 
 ## Running
 
@@ -127,7 +127,7 @@ the `SIGTERM` signal to the process using `kill <pid>`.
 You can see the commands it supports by using `pgagroal-cli -?` which will give
 
 ```
-pgagroal-cli 2.2.0
+pgagroal-cli 2.0.2
   Command line utility for pgagroal
 
 Usage:
@@ -214,7 +214,7 @@ registration with [**pgagroal**](https://github.com/pgagroal/pgagroal).
 You can see the commands it supports by using `pgagroal-admin -?` which will give
 
 ```
-pgagroal-admin 2.2.0
+pgagroal-admin 2.0.2
  Administration utility for pgagroal
 
 Usage:
@@ -272,7 +272,7 @@ Next steps in improving pgagroal's configuration could be
 * Enable Transport Layer Security v1.2+ (TLS)
 * Deploy Grafana dashboard
 
-See [Configuration](./CONFIGURATION.md) for more information on these subjects.
+See [Configuration](/doc/CONFIGURATION.md) for more information on these subjects.
 
 Please, read the manual for a full description of all the features available.
 
@@ -290,7 +290,7 @@ Feel free to
 
 All contributions are most welcome !
 
-Please, consult our [Code of Conduct](../CODE_OF_CONDUCT.md) policies for interacting in our
+Please, consult our [Code of Conduct](/CODE_OF_CONDUCT) policies for interacting in our
 community.
 
 Consider giving the project a [star](https://github.com/pgagroal/pgagroal/stargazers) on

@@ -1,4 +1,4 @@
-\newpage
+
 
 # Configuration
 
@@ -46,13 +46,13 @@ The available keys and their accepted values are reported in the table below.
 | rotate_frontend_password_timeout | 0 | String | No | The amount of time after which the passwords of frontend users are updated periodically. If this value is specified without units, it is taken as seconds. It supports the following units as suffixes: 'S' for seconds (default), 'M' for minutes, 'H' for hours, 'D' for days, and 'W' for weeks. (disable = 0) |
 | rotate_frontend_password_length | 8 | Int | No | The length of the randomized frontend password |
 | max_connection_age | 0 | String | No | The maximum amount of time that a connection will live. If this value is specified without units, it is taken as seconds. It supports the following units as suffixes: 'S' for seconds (default), 'M' for minutes, 'H' for hours, 'D' for days, and 'W' for weeks. (disable = 0) |
-| validation | `off` | String | No | Should connection validation be performed. Valid options: `off`, `foreground` and `background`. With the default `off`, connections are not actively checked before reuse and stale or broken connections can be handed to clients. Set to `background` to have a periodic scan validate idle connections, or to `foreground` to validate a connection before it is handed out. |
+| validation | `off` | String | No | Should connection validation be performed. Valid options: `off`, `foreground` and `background` |
 | background_interval | 300 | String | No | The interval between background validation scans. If this value is specified without units, it is taken as seconds. It supports the following units as suffixes: 'S' for seconds (default), 'M' for minutes, 'H' for hours, 'D' for days, and 'W' for weeks. |
 | max_retries | 5 | Int | No | The maximum number of iterations to obtain a connection |
 | max_connections | 100 | Int | No | The maximum number of connections to PostgreSQL (max 10000) |
-| allow_unknown_users | `true` | Bool | No | Allow unknown users to connect. The default is `true`, which permits clients whose user is not listed in `pgagroal_users.conf` to reach the pooler and authenticate against PostgreSQL. Set to `false` to reject unknown users at the pooler. This setting is not supported by the transaction pipeline. |
+| allow_unknown_users | `true` | Bool | No | Allow unknown users to connect |
 | authentication_timeout | 5 | String | No | The amount of time the process will wait for valid credentials. If this value is specified without units, it is taken as seconds. It supports the following units as suffixes: 'S' for seconds (default), 'M' for minutes, 'H' for hours, 'D' for days, and 'W' for weeks. |
-| pipeline | `auto` | String | No | The pipeline type (`auto`, `performance`, `session`, `transaction`). With `auto`, the performance pipeline is selected by default and pgagroal downgrades to the session pipeline when `tls`, `failover`, or `disconnect_client` is enabled. See [Pipelines](./17-pipelines.md) for details on each pipeline. |
+| pipeline | `auto` | String | No | The pipeline type (`auto`, `performance`, `session`, `transaction`) |
 | auth_query | `off` | Bool | No | Enable authentication query |
 | failover | `off` | Bool | No | Enable failover support |
 | failover_script | | String | No | The failover script to execute |
@@ -63,7 +63,7 @@ The available keys and their accepted values are reported in the table below.
 | metrics_cert_file | | String | No | Certificate file for TLS for Prometheus metrics. This file must be owned by either the user running pgagroal or root. |
 | metrics_key_file | | String | No | Private key file for TLS for Prometheus metrics. This file must be owned by either the user running pgagroal or root. Additionally permissions must be at least `0640` when owned by root or `0600` otherwise. |
 | metrics_ca_file | | String | No | Certificate Authority (CA) file for TLS for Prometheus metrics. This file must be owned by either the user running pgagroal or root.  |
-| ev_backend | `auto` | String | No | Select the event backend to use. Valid options: `auto`, `io_uring`, `epoll` and `kqueue` |
+| libev | `auto` | String | No | Select the [libev](http://software.schmorp.de/pkg/libev.html) backend to use. Valid options: `auto`, `select`, `poll`, `epoll`, `iouring`, `devpoll` and `port` |
 | keep_alive | on | Bool | No | Have `SO_KEEPALIVE` on sockets |
 | nodelay | on | Bool | No | Have `TCP_NODELAY` on sockets |
 | backlog | `max_connections` / 4 | Int | No | The backlog for `listen()`. Minimum `16` |
@@ -72,12 +72,6 @@ The available keys and their accepted values are reported in the table below.
 | track_prepared_statements | off | Bool | No | Track prepared statements (transaction pooling) |
 | pidfile | | String | No | Path to the PID file. If omitted, automatically set to `unix_socket_dir`/pgagroal.`port`.pid |
 | update_process_title | `verbose` | String | No | The behavior for updating the operating system process title, mainly related to connection processes. Allowed settings are: `never` (or `off`), does not update the process title; `strict` to set the process title without overriding the existing initial process title length; `minimal` to set the process title to `username/database`; `verbose` (or `full`) to set the process title to `user@host:port/database`. Please note that `strict` and `minimal` are honored only on those systems that do not provide a native way to set the process title (e.g., Linux). On other systems, there is no difference between `strict` and `minimal` and the assumed behaviour is `minimal` even if `strict` is used. `never` and `verbose` are always honored, on every system. On Linux systems the process title is always trimmed to 255 characters, while on system that provide a natve way to set the process title it can be longer. |
-| health_check | `off` | Bool | No | Enables or disables periodic health checks. If enabled, pgagroal will periodically check the health of the servers. |
-| health_check_period | 30 | Int | No | The interval in seconds between health check scans. |
-| health_check_timeout | 5 | String | No | The amount of time the process will wait for a response during a health check. If this value is specified without units, it is taken as seconds. It supports the following units as suffixes: 'S' for seconds (default), 'M' for minutes, 'H' for hours, 'D' for days, and 'W' for weeks. |
-| health_check_user | | String | Yes (if health_check=on) | The user used for connecting to the health check. This user will also be used as the database name. This credential is also used at startup for the `startup_validation` check. It is best practice to configure `health_check_user` on all servers, even if `health_check` is disabled, so that startup validation can verify server identifiers. See [Health Check](./19-health_check.md) for setup details and security considerations. |
-| startup_validation | `try` | String | No | Controls startup validation of server system identifiers. `on`: fail startup if identifiers cannot be fetched or if duplicates are detected (requires `health_check_user`). `try`: attempt the check if `health_check_user` is set, otherwise log an INFO message and continue. `off`: skip identifier checks entirely. |
-
 
 __Danger zone__
 
@@ -103,15 +97,6 @@ There can be up to `64` host sections, each with an unique name and different co
 | tls_ca_file | | String | No | Certificate Authority (CA) file for TLS. This file must be owned by either the user running pgagroal or root. Changes require restart. |
 
 Note, that if `host` starts with a `/` it represents a path and [**pgagroal**](https://github.com/pgagroal/pgagroal) will connect using a Unix Domain Socket.
-
-### system_identifier duplicate behavior
-
-At startup, pgagroal checks each configured server's PostgreSQL `system_identifier` when `startup_validation` is enabled (and `health_check_user` is configured according to the selected mode).
-
-- If two non-primary servers (`primary = off`) expose the same `system_identifier`, startup validation fails.
-- If a duplicate pair includes a server with `primary = on`, startup validation does not fail for that pair.
-
-This behavior is consistent with PostgreSQL replication semantics: a standby created from a primary backup remains part of the same cluster and therefore shares the same `system_identifier` as its primary.
 
 ## pgagroal_hba.conf
 
