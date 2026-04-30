@@ -1,4 +1,4 @@
-
+\newpage
 
 # Introduction
 
@@ -32,6 +32,41 @@ The supported platforms are
 * [FreeBSD][freebsd]
 * [OpenBSD][openbsd]
 
+## Migration
+
+### From 2.0.x to 2.1.x
+
+#### Vault Encryption
+
+The key derivation for vault file encryption has been upgraded to
+`PKCS5_PBKDF2_HMAC` (SHA-256, random 16-byte salt, 600,000 iterations).
+
+This is a **breaking change**. Existing vault files encrypted with the
+old method cannot be decrypted by version 2.1.x.
+
+**Action required:**
+
+1. Stop pgagroal
+2. Delete the existing user files:
+   - `pgagroal_users.conf`
+   - `pgagroal_frontend_users.conf`.
+   - `pgagroal_admins.conf`
+   - `pgagroal_superuser.conf`
+   - Vault users file (if applicable)
+3. Delete the existing master key:
+   ```
+   rm ~/.pgagroal/master.key
+   ```
+4. Regenerate the master key:
+   ```
+   pgagroal-admin master-key
+   ```
+5. Re-add all users:
+   ```
+   pgagroal-admin user add -f <users_file>
+   ```
+6. Restart pgagroal
+
 ## How to Use This Manual
 
 This manual is organized to guide you from initial setup to advanced usage and development. Use the table below to quickly find the section most relevant to your needs:
@@ -43,32 +78,34 @@ This manual is organized to guide you from initial setup to advanced usage and d
 
 | Chapter                                                           | File                                                              | Description                                                                   |
 |-------------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| [Installation](#installation)                                    | [02-installation.md](/doc/manual/en/02-installation)                         | Step-by-step setup for Rocky Linux, PostgreSQL 18, and pgagroal             |
-| [Getting Started](#getting-started)                              | [03-gettingstarted.md](/doc/manual/en/03-gettingstarted)                     | Quick introduction to basic pgagroal usage and initial configuration        |
-| [Configuration](#configuration)                                  | [04-configuration.md](/doc/manual/en/04-configuration)                       | Comprehensive guide to all configuration files and options                   |
-| [Prefill](#prefill)                                              | [05-prefill.md](/doc/manual/en/05-prefill)                                   | How to configure and use connection prefill for better performance          |
-| [Remote Management](#remote-administration)                      | [06-remote_management.md](/doc/manual/en/06-remote_management)               | Setting up and using remote management features for pgagroal                |
-| [Split Security](#security-model)                                | [07-split_security.md](/doc/manual/en/07-split_security)                     | Implementing split security models for authentication and access control    |
-| [TLS](#transport-level-security-tls)                             | [08-tls.md](/doc/manual/en/08-tls)                                           | Configuring Transport Layer Security (TLS) for secure connections           |
-| [Database Alias](#database-aliases)                              | [09-database_alias.md](/doc/manual/en/09-database_alias)                     | Using database aliases for flexible client connections                      |
-| [Vault](#vault)                                                  | [10-vault.md](/doc/manual/en/10-vault)                                       | Managing user credentials and secrets with the pgagroal vault               |
-| [Prometheus](#prometheus)                                        | [11-prometheus.md](/doc/manual/en/11-prometheus)                             | Integrating Prometheus metrics and monitoring                               |
-| [Docker](#docker)                                                | [12-docker.md](/doc/manual/en/12-docker)                                     | Running pgagroal in Docker containers                                       |
-| [Command Line Tools](#command-line-tools)                        | [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               | Comprehensive CLI tools reference (pgagroal-cli, pgagroal-admin)           |
-| [Performance](#performance)                                      | [14-performance.md](/doc/manual/en/14-performance)                           | Performance benchmarks, tuning, and optimization                            |
-| [Failover](#failover)                                            | [15-failover.md](/doc/manual/en/15-failover)                                 | Failover configuration and scripting                                        |
-| [Pipelines](#pipelines)                                          | [16-pipelines.md](/doc/manual/en/16-pipelines)                               | Pipeline types and configuration                                             |
-| [Security](#security)                                            | [17-security.md](/doc/manual/en/17-security)                                 | Comprehensive security hardening guide                                      |
-| [Development](#developers)                                       | [70-dev.md](/doc/manual/en/70-dev)                                           | Development environment setup and contribution guidelines                   |
-| [Git](#git-guide)                                                | [71-git.md](/doc/manual/en/71-git)                                           | Git workflow and version control practices for the project                  |
-| [Architecture](#architecture)                                    | [72-architecture.md](/doc/manual/en/72-architecture)                         | High-level architecture and design of pgagroal                              |
-| [RPM](#rpm)                                                      | [73-rpm.md](/doc/manual/en/73-rpm)                                           | Building and using RPM packages                                             |
-| [Building](#building-pgagroal)                                   | [74-building.md](/doc/manual/en/74-building)                                 | Compiling pgagroal from source                                              |
-| [Code Coverage](#code-coverage)                                  | [75-codecoverage.md](/doc/manual/en/75-codecoverage)                         | Code coverage analysis and testing practices                                |
-| [Event Loop](#event-loop)                                        | [76-eventloop.md](/doc/manual/en/76-eventloop)                               | Understanding the event loop implementation                                  |
-| [Core API](#core-apis)                                           | [77-core_api.md](/doc/manual/en/77-core_api)                                 | Reference for core API functions                                            |
-| [Testing](#test-suite)                                           | [78-test.md](/doc/manual/en/78-test)                                         | Testing frameworks and procedures                                           |
-| [Distribution Installation](#distribution-specific-installation) | [79-distributions.md](/doc/manual/en/79-distributions)                       | Platform-specific installation notes                                        |
-| [Acknowledgements](#acknowledgement)                             | [97-acknowledgement.md](/doc/manual/en/97-acknowledgement)                   | Credits and contributors                                                     |
-| [Licenses](#license)                                             | [98-licenses.md](/doc/manual/en/98-licenses)                                 | License information                                                          |
-| [References](#references)                                        | [99-references.md](/doc/manual/en/99-references)                             | Additional resources and references                                          |
+| [Installation](#installation)                                    | [02-installation.md](02-installation.md)                         | Step-by-step setup for Rocky Linux, PostgreSQL 18, and pgagroal             |
+| [Getting Started](#getting-started)                              | [03-gettingstarted.md](03-gettingstarted.md)                     | Quick introduction to basic pgagroal usage and initial configuration        |
+| [Configuration](#configuration)                                  | [04-configuration.md](04-configuration.md)                       | Comprehensive guide to all configuration files and options                   |
+| [Prefill](#prefill)                                              | [05-prefill.md](05-prefill.md)                                   | How to configure and use connection prefill for better performance          |
+| [Remote Management](#remote-administration)                      | [06-remote_management.md](06-remote_management.md)               | Setting up and using remote management features for pgagroal                |
+| [Split Security](#security-model)                                | [07-split_security.md](07-split_security.md)                     | Implementing split security models for authentication and access control    |
+| [TLS](#transport-level-security-tls)                             | [08-tls.md](08-tls.md)                                           | Configuring Transport Layer Security (TLS) for secure connections           |
+| [Database Alias](#database-aliases)                              | [09-database_alias.md](09-database_alias.md)                     | Using database aliases for flexible client connections                      |
+| [Vault](#vault)                                                  | [10-vault.md](10-vault.md)                                       | Managing user credentials and secrets with the pgagroal vault               |
+| [Prometheus](#prometheus)                                        | [11-prometheus.md](11-prometheus.md)                             | Integrating Prometheus metrics and monitoring                               |
+| [Web Console](#web-console)                                      | [12-console.md](12-console.md)                                   | Web-based monitoring console for metrics visualization                     |
+| [Docker](#docker)                                                | [13-docker.md](13-docker.md)                                     | Running pgagroal in Docker containers                                       |
+| [Command Line Tools](#command-line-tools)                        | [14-cli-tools.md](14-cli-tools.md)                               | Comprehensive CLI tools reference (pgagroal-cli, pgagroal-admin)           |
+| [Performance](#performance)                                      | [15-performance.md](15-performance.md)                           | Performance benchmarks, tuning, and optimization                            |
+| [Failover](#failover)                                            | [16-failover.md](16-failover.md)                                 | Failover configuration and scripting                                        |
+| [Pipelines](#pipelines)                                          | [17-pipelines.md](17-pipelines.md)                               | Pipeline types and configuration                                             |
+| [Security](#security)                                            | [18-security.md](18-security.md)                                 | Comprehensive security hardening guide                                      |
+| [Health Check](#health-check)                                    | [19-health_check.md](19-health_check.md)                         | Setting up and configuring health checks                                     |
+| [Development](#developers)                                       | [70-dev.md](70-dev.md)                                           | Development environment setup and contribution guidelines                   |
+| [Git](#git-guide)                                                | [71-git.md](71-git.md)                                           | Git workflow and version control practices for the project                  |
+| [Architecture](#architecture)                                    | [72-architecture.md](72-architecture.md)                         | High-level architecture and design of pgagroal                              |
+| [RPM](#rpm)                                                      | [73-rpm.md](73-rpm.md)                                           | Building and using RPM packages                                             |
+| [Building](#building-pgagroal)                                   | [74-building.md](74-building.md)                                 | Compiling pgagroal from source                                              |
+| [Code Coverage](#code-coverage)                                  | [75-codecoverage.md](75-codecoverage.md)                         | Code coverage analysis and testing practices                                |
+| [Event Loop](#event-loop)                                        | [76-eventloop.md](76-eventloop.md)                               | Understanding the event loop implementation                                  |
+| [Core API](#core-apis)                                           | [77-core_api.md](77-core_api.md)                                 | Reference for core API functions                                            |
+| [Testing](#test-suite)                                           | [78-test.md](78-test.md)                                         | Testing frameworks and procedures                                           |
+| [Distribution Installation](#distribution-specific-installation) | [79-distributions.md](79-distributions.md)                       | Platform-specific installation notes                                        |
+| [Acknowledgements](#acknowledgement)                             | [97-acknowledgement.md](97-acknowledgement.md)                   | Credits and contributors                                                     |
+| [Licenses](#license)                                             | [98-licenses.md](98-licenses.md)                                 | License information                                                          |
+| [References](#references)                                        | [99-references.md](99-references.md)                             | Additional resources and references                                          |
