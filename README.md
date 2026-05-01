@@ -15,13 +15,13 @@ Follow these steps to get your local development environment set up:
 ### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/pgagroal/pgagroal.git
-cd pgagroal/website
+git clone https://github.com/pgagroal/pgagroal.github.io.git
+cd pgagroal.github.io
 ```
 
 ### 2. Install Dependencies
 
-Navigate to the project directory and install the necessary dependencies:
+Install the necessary dependencies:
 ```sh
 pnpm install
 ```
@@ -33,7 +33,7 @@ To start the local development server and begin working on the VitePress site, r
 pnpm dev
 ```
 
-By default, the dev server runs at `http://localhost:5173/`.
+By default, the dev server runs at http://localhost:5173/.
 
 ### 4. Build the Site
 
@@ -50,6 +50,21 @@ To serve the generated site locally after building it, run:
 ```sh
 pnpm preview
 ```
+
+### 6. Sync the Imported Documentation
+
+The documentation under doc/ is fetched from the upstream pgagroal repository. To refresh the site content:
+
+1. Set the desired tag value in [scripts/fetch-docs.mjs](scripts/fetch-docs.mjs) (the `TAG` constant)
+2. Run the sync command:
+
+```sh
+pnpm sync-docs
+```
+
+This script automatically fetches the documentation from the configured source and updates the doc/ folder in the website.
+
+
 
 ## License
 
