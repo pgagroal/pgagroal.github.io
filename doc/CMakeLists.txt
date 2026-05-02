@@ -19,6 +19,8 @@ if (RST2MAN_FOUND)
   set(PGAGROAL_VAULT_DST_FILE "${CMAKE_CURRENT_BINARY_DIR}/pgagroal-vault.1")
   set(PGAGROAL_VAULT_CONF_SRC_FILE "${CMAKE_CURRENT_SOURCE_DIR}/man/pgagroal_vault.conf.5.rst")
   set(PGAGROAL_VAULT_CONF_DST_FILE "${CMAKE_CURRENT_BINARY_DIR}/pgagroal_vault.conf.5")
+  set(PGAGROAL_CONFIG_SRC_FILE "${CMAKE_CURRENT_SOURCE_DIR}/man/pgagroal-config.1.rst")
+  set(PGAGROAL_CONFIG_DST_FILE "${CMAKE_CURRENT_BINARY_DIR}/pgagroal-config.1")
 
   # pgagroal.1
   add_custom_command(
@@ -84,6 +86,14 @@ if (RST2MAN_FOUND)
     COMMENT "Generating man page: pgagroal_vault.conf.5"
   )
 
+  # pgagroal-config.1
+  add_custom_command(
+    OUTPUT ${PGAGROAL_CONFIG_DST_FILE}
+    COMMAND ${RST2MAN_EXECUTABLE} ${PGAGROAL_CONFIG_SRC_FILE} ${PGAGROAL_CONFIG_DST_FILE}
+    DEPENDS ${PGAGROAL_CONFIG_SRC_FILE}
+    COMMENT "Generating man page: pgagroal-config.1"
+  )
+
   # Group man page outputs into a target
   add_custom_target(manpages ALL
     DEPENDS
@@ -95,6 +105,7 @@ if (RST2MAN_FOUND)
     ${PGAGROAL_HBA_CONF_DST_FILE}
     ${PGAGROAL_DATABASES_CONF_DST_FILE}
     ${PGAGROAL_VAULT_CONF_DST_FILE}
+    ${PGAGROAL_CONFIG_DST_FILE}
   )
 
   add_dependencies(man manpages)
@@ -116,6 +127,7 @@ if (RST2MAN_FOUND)
   install(FILES ${PGAGROAL_HBA_CONF_DST_FILE} DESTINATION share/man/man5)
   install(FILES ${PGAGROAL_DATABASES_CONF_DST_FILE} DESTINATION share/man/man5)
   install(FILES ${PGAGROAL_VAULT_CONF_DST_FILE} DESTINATION share/man/man5)
+  install(FILES ${PGAGROAL_CONFIG_DST_FILE} DESTINATION share/man/man1)
 endif()
 
 #
@@ -137,14 +149,14 @@ if (DOCS)
 
   add_custom_command(
     OUTPUT ${MANUAL_OUTPUT_DIR}/pgagroal-en.pdf
-    COMMAND ${PANDOC_EXECUTABLE} -o ${MANUAL_OUTPUT_DIR}/pgagroal-en.pdf --from markdown --template eisvogel --listings -N --toc ${EN}
+    COMMAND ${PANDOC_EXECUTABLE} -o ${MANUAL_OUTPUT_DIR}/pgagroal-en.pdf --resource-path=${CMAKE_BINARY_DIR} --from markdown --template eisvogel --listings -N --toc ${EN}
     DEPENDS ${EN}
     COMMENT "Generating English PDF documentation"
   )
 
   add_custom_command(
     OUTPUT ${MANUAL_OUTPUT_DIR}/pgagroal-en.html
-    COMMAND ${PANDOC_EXECUTABLE} -o ${MANUAL_OUTPUT_DIR}/pgagroal-en.html -s -f markdown-smart -N --toc -t html5 ${EN}
+    COMMAND ${PANDOC_EXECUTABLE} -o ${MANUAL_OUTPUT_DIR}/pgagroal-en.html --resource-path=${CMAKE_BINARY_DIR} -s -f markdown-smart -N --toc -t html5 ${EN}
     DEPENDS ${EN}
     COMMENT "Generating English HTML documentation"
   )
@@ -168,7 +180,7 @@ if (DOCS)
     set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)
     set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.doxygen)
 
-    doxygen_add_docs(doxygen ${PROJECT_SOURCE_DIR}/src/include/)
+    doxygen_add_docs(doxygen ${PROJECT_SOURCE_DIR}/src/include/ ${PROJECT_SOURCE_DIR}/test/include/)
 
     if (${DOXYGEN_VERSION} STREQUAL "1.10.0" OR
         ${DOXYGEN_VERSION} STREQUAL "1.11.0" OR

@@ -32,6 +32,41 @@ The supported platforms are
 * [FreeBSD][freebsd]
 * [OpenBSD][openbsd]
 
+## Migration
+
+### From 2.0.x to 2.1.0
+
+#### Vault Encryption
+
+The key derivation for vault file encryption has been upgraded to
+`PKCS5_PBKDF2_HMAC` (SHA-256, random 16-byte salt, 600,000 iterations).
+
+This is a **breaking change**. Existing vault files encrypted with the
+old method cannot be decrypted by version 2.1.0.
+
+**Action required:**
+
+1. Stop pgagroal
+2. Delete the existing user files:
+   - `pgagroal_users.conf`
+   - `pgagroal_frontend_users.conf`.
+   - `pgagroal_admins.conf`
+   - `pgagroal_superuser.conf`
+   - Vault users file (if applicable)
+3. Delete the existing master key:
+   ```
+   rm ~/.pgagroal/master.key
+   ```
+4. Regenerate the master key:
+   ```
+   pgagroal-admin master-key
+   ```
+5. Re-add all users:
+   ```
+   pgagroal-admin user add -f <users_file>
+   ```
+6. Restart pgagroal
+
 ## How to Use This Manual
 
 This manual is organized to guide you from initial setup to advanced usage and development. Use the table below to quickly find the section most relevant to your needs:
@@ -53,12 +88,14 @@ This manual is organized to guide you from initial setup to advanced usage and d
 | [Database Alias](#database-aliases)                              | [09-database_alias.md](/doc/manual/en/09-database_alias)                     | Using database aliases for flexible client connections                      |
 | [Vault](#vault)                                                  | [10-vault.md](/doc/manual/en/10-vault)                                       | Managing user credentials and secrets with the pgagroal vault               |
 | [Prometheus](#prometheus)                                        | [11-prometheus.md](/doc/manual/en/11-prometheus)                             | Integrating Prometheus metrics and monitoring                               |
-| [Docker](#docker)                                                | [12-docker.md](/doc/manual/en/12-docker)                                     | Running pgagroal in Docker containers                                       |
-| [Command Line Tools](#command-line-tools)                        | [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               | Comprehensive CLI tools reference (pgagroal-cli, pgagroal-admin)           |
-| [Performance](#performance)                                      | [14-performance.md](/doc/manual/en/14-performance)                           | Performance benchmarks, tuning, and optimization                            |
-| [Failover](#failover)                                            | [15-failover.md](/doc/manual/en/15-failover)                                 | Failover configuration and scripting                                        |
-| [Pipelines](#pipelines)                                          | [16-pipelines.md](/doc/manual/en/16-pipelines)                               | Pipeline types and configuration                                             |
-| [Security](#security)                                            | [17-security.md](/doc/manual/en/17-security)                                 | Comprehensive security hardening guide                                      |
+| [Web Console](#web-console)                                      | [12-console.md](/doc/manual/en/12-console)                                   | Web-based monitoring console for metrics visualization                     |
+| [Docker](#docker)                                                | [13-docker.md](/doc/manual/en/13-docker)                                     | Running pgagroal in Docker containers                                       |
+| [Command Line Tools](#command-line-tools)                        | [14-cli-tools.md](/doc/manual/en/14-cli-tools)                               | Comprehensive CLI tools reference (pgagroal-cli, pgagroal-admin)           |
+| [Performance](#performance)                                      | [15-performance.md](/doc/manual/en/15-performance)                           | Performance benchmarks, tuning, and optimization                            |
+| [Failover](#failover)                                            | [16-failover.md](/doc/manual/en/16-failover)                                 | Failover configuration and scripting                                        |
+| [Pipelines](#pipelines)                                          | [17-pipelines.md](/doc/manual/en/17-pipelines)                               | Pipeline types and configuration                                             |
+| [Security](#security)                                            | [18-security.md](/doc/manual/en/18-security)                                 | Comprehensive security hardening guide                                      |
+| [Health Check](#health-check)                                    | [19-health_check.md](/doc/manual/en/19-health_check)                         | Setting up and configuring health checks                                     |
 | [Development](#developers)                                       | [70-dev.md](/doc/manual/en/70-dev)                                           | Development environment setup and contribution guidelines                   |
 | [Git](#git-guide)                                                | [71-git.md](/doc/manual/en/71-git)                                           | Git workflow and version control practices for the project                  |
 | [Architecture](#architecture)                                    | [72-architecture.md](/doc/manual/en/72-architecture)                         | High-level architecture and design of pgagroal                              |

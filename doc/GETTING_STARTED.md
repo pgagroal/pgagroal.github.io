@@ -4,7 +4,7 @@ First of all, make sure that [**pgagroal**](https://github.com/pgagroal/pgagroal
 using `pgagroal -?`. You should see
 
 ```
-pgagroal 2.0.2
+pgagroal 2.1.0
   High-performance connection pool for PostgreSQL
 
 Usage:
@@ -24,7 +24,7 @@ Options:
   -?, --help                         Display help
 ```
 
-If you don't have [**pgagroal**](https://github.com/pgagroal/pgagroal) in your path see [README](https://github.com/pgagroal/pgagroal/blob/2.0.2/README.md) on how to
+If you don't have [**pgagroal**](https://github.com/pgagroal/pgagroal) in your path see [README](https://github.com/pgagroal/pgagroal/blob/2.1.0/README.md) on how to
 compile and install [**pgagroal**](https://github.com/pgagroal/pgagroal) in your system.
 
 ## Configuration
@@ -125,7 +125,7 @@ the `SIGTERM` signal to the process using `kill <pid>`.
 You can see the commands it supports by using `pgagroal-cli -?` which will give
 
 ```
-pgagroal-cli 2.0.2
+pgagroal-cli 2.1.0
   Command line utility for pgagroal
 
 Usage:
@@ -189,7 +189,7 @@ pgagroal-cli -c pgagroal.conf flush idle
 To stop pgagroal you would use
 
 ```
-pgagroal-cli -c pgagroal.conf stop
+pgagroal-cli -c pgagroal.conf shutdown
 ```
 
 Check the outcome of the operations by verifying the exit code, like
@@ -212,7 +212,7 @@ registration with [**pgagroal**](https://github.com/pgagroal/pgagroal).
 You can see the commands it supports by using `pgagroal-admin -?` which will give
 
 ```
-pgagroal-admin 2.0.2
+pgagroal-admin 2.1.0
  Administration utility for pgagroal
 
 Usage:

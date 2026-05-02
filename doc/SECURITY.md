@@ -114,8 +114,8 @@ legacy_db                          legacyuser 8     3    1
 
 ### Implementation Details
 
-- The alias mapping is stored in the configuration structure ([`struct configuration`](https://github.com/pgagroal/pgagroal/blob/2.0.2/src/include/pgagroal.h))
-- Alias resolution is performed by the [`resolve_database_alias`](https://github.com/pgagroal/pgagroal/blob/2.0.2/src/libpgagroal/security.c) and [`resolve_database_name`](https://github.com/pgagroal/pgagroal/blob/2.0.2/src/libpgagroal/pool.c) functions
+- The alias mapping is stored in the configuration structure ([`struct configuration`](https://github.com/pgagroal/pgagroal/blob/2.1.0/src/include/pgagroal.h))
+- Alias resolution is performed by the [`resolve_database_alias`](https://github.com/pgagroal/pgagroal/blob/2.1.0/src/libpgagroal/security.c) and [`resolve_database_name`](https://github.com/pgagroal/pgagroal/blob/2.1.0/src/libpgagroal/pool.c) functions
 - When a client connects, the alias is resolved to the real database name before:
   - Creating a new backend connection (unpooled)
   - Matching an existing connection in the pool (pooled)
@@ -160,4 +160,4 @@ This displays all databases with their configured aliases in a readable format.
 - Aliases work seamlessly with all pgagroal features including connection pooling, authentication, and monitoring
 - For HBA configuration, you can use either the real database name or any of its aliases in the database field
 
-For more details, see the implementation in [`configuration.c`](https://github.com/pgagroal/pgagroal/blob/2.0.2/src/libpgagroal/configuration.c), [`security.c`](https://github.com/pgagroal/pgagroal/blob/2.0.2/src/libpgagroal/security.c), and [`pool.c`](https://github.com/pgagroal/pgagroal/blob/2.0.2/src/libpgagroal/pool.c).
+For more details, see the implementation in [`configuration.c`](https://github.com/pgagroal/pgagroal/blob/2.1.0/src/libpgagroal/configuration.c), [`security.c`](https://github.com/pgagroal/pgagroal/blob/2.1.0/src/libpgagroal/security.c), and [`pool.c`](https://github.com/pgagroal/pgagroal/blob/2.1.0/src/libpgagroal/pool.c).

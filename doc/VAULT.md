@@ -16,7 +16,7 @@ The characters `#` and `;` can be used for comments. A line is totally ignored i
 very first non-space character is a comment one, but it is possible to put a comment at the end of a line.
 The `Bool` data type supports the following values: `on`, `yes`, `1`, `true`, `off`, `no`, `0` and `false`.
 
-See a more complete [sample](https://github.com/pgagroal/pgagroal/blob/2.0.2/doc/etc/pgagroal_vault.conf) configuration for running `pgagroal-vault` on `localhost`.
+See a more complete [sample](https://github.com/pgagroal/pgagroal/blob/2.1.0/doc/etc/pgagroal_vault.conf) configuration for running `pgagroal-vault` on `localhost`.
 
 ## [pgagroal-vault]
 

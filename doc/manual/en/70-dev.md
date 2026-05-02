@@ -31,13 +31,13 @@ pgagroal documentation is organized to serve different audiences and use cases. 
 | **Work with core APIs**                | [Core API](#core-apis) \| [77-core_api.md](/doc/manual/en/77-core_api)                                                     |
 | **Understand event loop**              | [Event Loop](#event-loop) \| [76-eventloop.md](/doc/manual/en/76-eventloop)                                                |
 | **Configure security/TLS**             | [Transport Level Security (TLS)](#transport-level-security-tls) \| [08-tls.md](/doc/manual/en/08-tls)                     |
-| **Use command-line tools**             | [Command Line Tools](#command-line-tools) \| [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               |
+| **Use command-line tools**             | [Command Line Tools](#command-line-tools) \| [14-cli-tools.md](/doc/manual/en/14-cli-tools)                               |
 | **Set up monitoring**                  | [Prometheus](#prometheus) \| [11-prometheus.md](/doc/manual/en/11-prometheus)                                              |
-| **Optimize performance**               | [Performance](#performance) \| [14-performance.md](/doc/manual/en/14-performance)                                          |
-| **Configure failover**                 | [Failover](#failover) \| [15-failover.md](/doc/manual/en/15-failover)                                                      |
-| **Choose pipeline type**               | [Pipelines](#pipelines) \| [16-pipelines.md](/doc/manual/en/16-pipelines)                                                  |
-| **Harden security**                    | [Security](#security) \| [17-security.md](/doc/manual/en/17-security)                                                      |
-| **Deploy with Docker**                 | [Docker](#docker) \| [12-docker.md](/doc/manual/en/12-docker)                                                              |
+| **Optimize performance**               | [Performance](#performance) \| [15-performance.md](/doc/manual/en/15-performance)                                          |
+| **Configure failover**                 | [Failover](#failover) \| [16-failover.md](/doc/manual/en/16-failover)                                                      |
+| **Choose pipeline type**               | [Pipelines](#pipelines) \| [17-pipelines.md](/doc/manual/en/17-pipelines)                                                  |
+| **Harden security**                    | [Security](#security) \| [18-security.md](/doc/manual/en/18-security)                                                      |
+| **Deploy with Docker**                 | [Docker](#docker) \| [13-docker.md](/doc/manual/en/13-docker)                                                              |
 | **Configure database aliases**         | [Database Aliases](#database-aliases) \| [09-database_alias.md](/doc/manual/en/09-database_alias)                         |
 | **Manage user credentials**            | [Vault](#vault) \| [10-vault.md](/doc/manual/en/10-vault)                                                                  |
 | **Contribute to project**              | [Git guide](#git-guide) \| [71-git.md](/doc/manual/en/71-git), see also `CONTRIBUTING.md` in project root                |
@@ -67,12 +67,13 @@ pgagroal documentation is organized to serve different audiences and use cases. 
 | [Database Aliases](#database-aliases)                            | [09-database_alias.md](/doc/manual/en/09-database_alias)                     | Using database aliases for flexible client connections                       |
 | [Vault](#vault)                                                  | [10-vault.md](/doc/manual/en/10-vault)                                       | Managing user credentials and secrets with pgagroal vault                    |
 | [Prometheus](#prometheus)                                        | [11-prometheus.md](/doc/manual/en/11-prometheus)                             | Integrating Prometheus metrics and monitoring                                |
-| [Docker](#docker)                                                | [12-docker.md](/doc/manual/en/12-docker)                                     | Running pgagroal in Docker containers                                        |
-| [Command Line Tools](#command-line-tools)                        | [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               | Comprehensive CLI tools reference (pgagroal-cli, pgagroal-admin)            |
-| [Performance](#performance)                                      | [14-performance.md](/doc/manual/en/14-performance)                           | Performance benchmarks, tuning, and optimization                             |
-| [Failover](#failover)                                            | [15-failover.md](/doc/manual/en/15-failover)                                 | Failover configuration and scripting                                         |
-| [Pipelines](#pipelines)                                          | [16-pipelines.md](/doc/manual/en/16-pipelines)                               | Pipeline types and configuration                                              |
-| [Security](#security)                                            | [17-security.md](/doc/manual/en/17-security)                                 | Comprehensive security hardening guide                                       |
+| [Web Console](#web-console)                                      | [12-console.md](/doc/manual/en/12-console)                                   | Web-based monitoring console for metrics visualization                      |
+| [Docker](#docker)                                                | [13-docker.md](/doc/manual/en/13-docker)                                     | Running pgagroal in Docker containers                                        |
+| [Command Line Tools](#command-line-tools)                        | [14-cli-tools.md](/doc/manual/en/14-cli-tools)                               | Comprehensive CLI tools reference (pgagroal-cli, pgagroal-admin)            |
+| [Performance](#performance)                                      | [15-performance.md](/doc/manual/en/15-performance)                           | Performance benchmarks, tuning, and optimization                             |
+| [Failover](#failover)                                            | [16-failover.md](/doc/manual/en/16-failover)                                 | Failover configuration and scripting                                         |
+| [Pipelines](#pipelines)                                          | [17-pipelines.md](/doc/manual/en/17-pipelines)                               | Pipeline types and configuration                                              |
+| [Security](#security)                                            | [18-security.md](/doc/manual/en/18-security)                                 | Comprehensive security hardening guide                                       |
 
 **Developer-Focused Chapters (70-79):**
 
@@ -116,24 +117,25 @@ All administration topics are covered in this manual:
 | [Remote Management](#remote-administration)              | [06-remote_management.md](/doc/manual/en/06-remote_management)               | Remote management setup                                           |
 | [Transport Level Security](#transport-level-security-tls)| [08-tls.md](/doc/manual/en/08-tls)                                           | TLS configuration                                                 |
 | [Vault](#vault)                                          | [10-vault.md](/doc/manual/en/10-vault)                                       | User credential management                                        |
-| [Command Line Tools](#command-line-tools)                | [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               | Complete CLI reference (pgagroal-cli, pgagroal-admin)           |
-| [Performance](#performance)                              | [14-performance.md](/doc/manual/en/14-performance)                           | Performance tuning and benchmarks                                |
-| [Failover](#failover)                                    | [15-failover.md](/doc/manual/en/15-failover)                                 | Failover configuration and procedures                            |
-| [Pipelines](#pipelines)                                  | [16-pipelines.md](/doc/manual/en/16-pipelines)                               | Pipeline configuration and usage                                  |
-| [Security](#security)                                    | [17-security.md](/doc/manual/en/17-security)                                 | Security hardening and best practices                            |
+| [Command Line Tools](#command-line-tools)                | [14-cli-tools.md](/doc/manual/en/14-cli-tools)                               | Complete CLI reference (pgagroal-cli, pgagroal-admin)           |
+| [Performance](#performance)                              | [15-performance.md](/doc/manual/en/15-performance)                           | Performance tuning and benchmarks                                |
+| [Failover](#failover)                                    | [16-failover.md](/doc/manual/en/16-failover)                                 | Failover configuration and procedures                            |
+| [Pipelines](#pipelines)                                  | [17-pipelines.md](/doc/manual/en/17-pipelines)                               | Pipeline configuration and usage                                  |
+| [Security](#security)                                    | [18-security.md](/doc/manual/en/18-security)                                 | Security hardening and best practices                            |
 | [Prometheus](#prometheus)                                | [11-prometheus.md](/doc/manual/en/11-prometheus)                             | Monitoring and metrics                                            |
-| [Docker](#docker)                                        | [12-docker.md](/doc/manual/en/12-docker)                                     | Container deployment                                              |
+| [Web Console](#web-console)                              | [12-console.md](/doc/manual/en/12-console)                                   | Web-based monitoring console                                      |
+| [Docker](#docker)                                        | [13-docker.md](/doc/manual/en/13-docker)                                     | Container deployment                                              |
 
 **Legacy standalone documentation files (now superseded by manual chapters):**
 
 | Legacy File              | Superseded By                                                     | Chapter                                                           |
 |--------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|
-| doc/CLI.md               | [Command Line Tools](#command-line-tools)                        | [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               |
-| doc/ADMIN.md             | [Command Line Tools](#command-line-tools)                        | [13-cli-tools.md](/doc/manual/en/13-cli-tools)                               |
-| doc/PERFORMANCE.md       | [Performance](#performance)                                      | [14-performance.md](/doc/manual/en/14-performance)                           |
-| doc/FAILOVER.md          | [Failover](#failover)                                            | [15-failover.md](/doc/manual/en/15-failover)                                 |
-| doc/PIPELINES.md         | [Pipelines](#pipelines)                                          | [16-pipelines.md](/doc/manual/en/16-pipelines)                               |
-| doc/SECURITY.md          | [Security](#security)                                            | [17-security.md](/doc/manual/en/17-security)                                 |
+| doc/CLI.md               | [Command Line Tools](#command-line-tools)                        | [14-cli-tools.md](/doc/manual/en/14-cli-tools)                               |
+| doc/ADMIN.md             | [Command Line Tools](#command-line-tools)                        | [14-cli-tools.md](/doc/manual/en/14-cli-tools)                               |
+| doc/PERFORMANCE.md       | [Performance](#performance)                                      | [15-performance.md](/doc/manual/en/15-performance)                           |
+| doc/FAILOVER.md          | [Failover](#failover)                                            | [16-failover.md](/doc/manual/en/16-failover)                                 |
+| doc/PIPELINES.md         | [Pipelines](#pipelines)                                          | [17-pipelines.md](/doc/manual/en/17-pipelines)                               |
+| doc/SECURITY.md          | [Security](#security)                                            | [18-security.md](/doc/manual/en/18-security)                                 |
 | doc/DISTRIBUTIONS.md     | [Distribution Installation](#distribution-specific-installation) | [79-distributions.md](/doc/manual/en/79-distributions)                       |
 
 ### Developer Documentation

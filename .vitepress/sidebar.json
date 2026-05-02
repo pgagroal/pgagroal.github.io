@@ -44,28 +44,40 @@
     "link": "/doc/manual/en/11-prometheus"
   },
   {
+    "text": "Web console",
+    "link": "/doc/manual/en/12-console"
+  },
+  {
     "text": "Docker",
-    "link": "/doc/manual/en/12-docker"
+    "link": "/doc/manual/en/13-docker"
   },
   {
     "text": "Command Line Tools",
-    "link": "/doc/manual/en/13-cli-tools"
+    "link": "/doc/manual/en/14-cli-tools"
   },
   {
     "text": "Performance",
-    "link": "/doc/manual/en/14-performance"
+    "link": "/doc/manual/en/15-performance"
   },
   {
     "text": "Failover",
-    "link": "/doc/manual/en/15-failover"
+    "link": "/doc/manual/en/16-failover"
   },
   {
     "text": "Pipelines",
-    "link": "/doc/manual/en/16-pipelines"
+    "link": "/doc/manual/en/17-pipelines"
   },
   {
     "text": "Security",
-    "link": "/doc/manual/en/17-security"
+    "link": "/doc/manual/en/18-security"
+  },
+  {
+    "text": "Health Check",
+    "link": "/doc/manual/en/19-health_check"
+  },
+  {
+    "text": "Configuration Generator",
+    "link": "/doc/manual/en/20-config-generator"
   },
   {
     "text": "Developers",
